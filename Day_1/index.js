@@ -3,7 +3,7 @@
 //* input: "hamada" ===> output: HAMADA. expect
 //* input: 12 ===> output: "".   expect
 
-const capitalizeText = (input) => {
+export const capitalizeText = (input) => {
   if (typeof input !== "string"){
     throw new TypeError("parameter should be string")
   };
@@ -20,7 +20,7 @@ const capitalizeText = (input) => {
 //* problem 2
 //* input number 3 ==> output should be [0,1,2]
 
-const createArray = (number) => {
+export const createArray = (number) => {
   const myArray = Array.from(Array(number).keys());
   return myArray;
 };
@@ -38,14 +38,14 @@ const createArray = (number) => {
 
 //* problem 3
 let obj = {id:1}
-let obj1 = {x:obj}
-let obj2 = {x:obj}
+export let obj1 = {x:obj}
+export let obj2 = {x:obj}
 //? check whether obj1 is equal to obj2 using expect , should and assert
 
 //& ////////////////////////////////////////////////////////
 
 //* problem 4 
-function CheckPositivity(x){
+export function CheckPositivity(x){
   if(x>0){
     return true
   }else{
@@ -57,13 +57,16 @@ function CheckPositivity(x){
 //& ////////////////////////////////////////////////////////
 
 //* problem 5
-MathUtils = function () {};
+export const MathUtils = function () {};
 
 MathUtils.prototype.sum = function (number1, number2) {
   return number1 + number2;
 };
 
 MathUtils.sub = function(number1,number2){
+  if (arguments.length !== 2 || typeof number1 !== "number" || typeof number2 !== "number") {
+    throw new Error("Two numerical parameters are required");
+  }
   return number1 - number2
 }
 
@@ -75,7 +78,10 @@ MathUtils.sub = function(number1,number2){
 //& ////////////////////////////////////////////////////////
 
 //* problem 6
-function Mult(x){
+export function Mult(x){
+  if (x <= 0) {
+    throw new Error("x must be greater than zero");
+  }
   return x*2;
 }
 //? using assert 
@@ -85,7 +91,7 @@ function Mult(x){
 //& ////////////////////////////////////////////////////////////
 
 //* problem 7
-let obj3 = {a: {b: [{x: 1}]}}
+export let obj3 = {a: {b: [{x: 1}]}}
 //? using assert check 'a.b[0]' will include {x: 1}
 
 //& ////////////////////////////////////////////////////////
